@@ -1,0 +1,26 @@
+11
+Filename: task_levenshein.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+     4   13.195 MiB    0.000 MiB   @profile
+     5                             def levenshtein_dist(s, len_s, t, len_t):
+     6   13.195 MiB    0.000 MiB       if len_s == 0:
+     7   13.195 MiB    0.000 MiB           return len_t
+     8                             
+     9   13.195 MiB    0.000 MiB       if len_t == 0:
+    10   13.195 MiB    0.000 MiB           return len_s
+    11                             
+    12   13.195 MiB    0.000 MiB       cost = 0
+    13   13.195 MiB    0.000 MiB       if s[len_s - 1] == t[len_t - 1]:
+    14   13.195 MiB    0.000 MiB           cost = 0
+    15                                 else:
+    16   13.195 MiB    0.000 MiB           cost = 1
+    17                             
+    18   13.195 MiB    0.000 MiB       return min(
+    19   13.195 MiB    0.000 MiB           levenshtein_dist(s, len_s - 1, t, len_t) + 1,
+    20   13.195 MiB    0.000 MiB           levenshtein_dist(s, len_s, t, len_t - 1) + 1,
+    21   13.195 MiB    0.000 MiB           levenshtein_dist(s, len_s - 1, t, len_t - 1) + cost,
+    22                                 )
+
+

@@ -1,0 +1,30 @@
+11
+Wrote profile results to task_levenshein.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 3.14634 s
+File: task_levenshein.py
+Function: levenshtein_dist at line 4
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     4                                           @profile
+     5                                           def levenshtein_dist(s, len_s, t, len_t):
+     6   1321027       466189      0.4     14.8      if len_s == 0:
+     7    703640       221847      0.3      7.1          return len_t
+     8                                           
+     9    617387       220268      0.4      7.0      if len_t == 0:
+    10    177045        55065      0.3      1.8          return len_s
+    11                                           
+    12    440342       159005      0.4      5.1      cost = 0
+    13    440342       225977      0.5      7.2      if s[len_s - 1] == t[len_t - 1]:
+    14     18207         6736      0.4      0.2          cost = 0
+    15                                               else:
+    16    422135       144870      0.3      4.6          cost = 1
+    17                                           
+    18    440342       153793      0.3      4.9      return min(
+    19    440342       501347      1.1     15.9          levenshtein_dist(s, len_s - 1, t, len_t) + 1,
+    20    440342       486703      1.1     15.5          levenshtein_dist(s, len_s, t, len_t - 1) + 1,
+    21    440342       504540      1.1     16.0          levenshtein_dist(s, len_s - 1, t, len_t - 1) + cost,
+    22                                               )
+
